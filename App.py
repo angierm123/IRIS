@@ -9,17 +9,17 @@ with open('iris_model.pkl', 'rb') as f:
 with open('scaler.pkl', 'rb') as f:
     scaler = pickle.load(f)
 
-# Definir la interfaz de usuario
+# Define the user interface
 st.title("Clasificación de Flores Iris 🌸")
 st.write("Ingrese las dimensiones para predecir la especie de la flor.")
 
-# Entradas del usuario
+# User inputs
 sepal_length = st.number_input("Sepal Length (cm)", min_value=0.0, step=0.1)
 sepal_width = st.number_input("Sepal Width (cm)", min_value=0.0, step=0.1)
 petal_length = st.number_input("Petal Length (cm)", min_value=0.0, step=0.1)
 petal_width = st.number_input("Petal Width (cm)", min_value=0.0, step=0.1)
 
-# Botón de predicción
+# Prediction button
 if st.button("Predecir"):
     features = np.array([[sepal_length, sepal_width, petal_length, petal_width]])
     features_scaled = scaler.transform(features)
